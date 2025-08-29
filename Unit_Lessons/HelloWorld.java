@@ -38,7 +38,7 @@ public class HelloWorld {
         }
 
         boolean isCompSciFun = true;
-        if (isCompSciFun){
+        if (isCompSciFun) {
             System.out.println("Comp Sci is fun!");
         } else {
             System.out.println("Comp Sci sucks!");
@@ -46,12 +46,12 @@ public class HelloWorld {
 
         // Challenge -> Write a conditional statement if else statment where you do something if you ate 5 apples vs 10. 
         int appleCount = 1; 
-        if (appleCount == 5){
+        if (appleCount == 5) {
             System.out.println("You ate 5 apples!");
         } else if (appleCount == 10){
             System.out.println("You ate 10 apples");
         } else {
-            System.out.println("You ate apples!");
+            System.out.println("You ate " + appleCount + "apples!");
         }
 
     }
