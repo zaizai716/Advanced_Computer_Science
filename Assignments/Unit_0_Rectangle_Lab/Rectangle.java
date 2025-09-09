@@ -16,7 +16,7 @@ public class Rectangle {
     
     // methods
     public String toString() {
-        System.out.println("This rectangle has a length of " + length + " and a width of " + width + ". Its area is " + (length * width) + ".");
+        return("This rectangle has a length of " + length + " and a width of " + width + ". Its area is " + (length * width) + ".");
     }
 
     public boolean equals(Rectangle other) {
@@ -36,7 +36,7 @@ public class Rectangle {
     }
 
     public double calculateDiagonal() {
-        return (())
+        return Math.sqrt((length * length) + (width * width));
     }
 
     // getters
@@ -56,3 +56,5 @@ public class Rectangle {
     public void setWidth(int input) {
         width = input;
     }
+
+}
