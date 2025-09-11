@@ -16,7 +16,9 @@ public class Rectangle {
     
     // methods
     public String toString() {
-        return("This rectangle has a length of " + length + " and a width of " + width + ". Its area is " + (length * width) + ".");
+
+        return ("This rectangle's length is " + length + ". Its width is " + width + ". Area is " + (length * width) + ".");
+
     }
 
     public boolean equals(Rectangle other) {
