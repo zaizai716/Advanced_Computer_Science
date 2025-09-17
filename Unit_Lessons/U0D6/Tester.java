@@ -27,6 +27,14 @@ public class Tester {
         // &&, ||
 
         System.out.println(3 + Integer.parseInt("123") * 9 / 8 + 7 >= 5);
+        // Challenge: give me the 7 operations in order of operations
+        // 1. Parse int
+        // 2. 3 + 123 = 126
+        // 3. 126 * 9
+        // 4. 1134 / 8
+        // 5. 141 + 7
+        // 6. 148 >= 5
+        // 7. True
     }
 
 }
