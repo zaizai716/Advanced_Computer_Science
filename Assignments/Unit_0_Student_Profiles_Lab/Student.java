@@ -21,7 +21,7 @@ public class Student {
         return name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -52,7 +52,9 @@ public class Student {
     }
 
     public String generateId() {
-        return ((Math.random() * 9) + 1)
+        return ((Math.random() * 8) + 1) + ((Math.random() * 8) + 1) +
+        ((Math.random() * 8) + 1) + "-" + Math.random() + Math.random() + Math.random()
+        + Math.random();
     }
 
 
