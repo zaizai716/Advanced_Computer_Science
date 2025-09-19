@@ -5,15 +5,16 @@ public class Student {
     private int grade = 0;
 
     // constructors
-    public Student(String Pname, int Pgrade) {
-        this.name = Pname;
-        this.grade = Pgrade;
+    public Student(String name, int grade) {
+        this.name = name;
+        this.grade = grade;
         this.id = generateId();
     }
 
-    public Student(String Pname) {
-        this.name = Pname;
+    public Student(String name) {
+        this.name = name;
         this.grade = 10;
+        this.id = generateId();
     }
 
     // getters
@@ -48,14 +49,18 @@ public class Student {
     }
 
     public boolean equals(Student other) {
-        return (name == other.name && id == other.id && grade == other.grade);
+        if (name.equals(other.name) && id.equals(other.id) && grade == other.grade) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String generateId() {
-        return ((Math.random() * 8) + 1) + ((Math.random() * 8) + 1) +
-        ((Math.random() * 8) + 1) + "-" + Math.random() + Math.random() + Math.random()
-        + Math.random();
+        return "" + ((int) (Math.random() * 7) + 1) + ((int) (Math.random() * 7) + 1)
+                + ((int) (Math.random() * 7) + 1) + "-" + ((int) (Math.random() * 10))
+                + ((int) (Math.random()) * 10) + ((int) (Math.random() * 10))
+                + ((int) (Math.random() * 10));
     }
-
 
 }
