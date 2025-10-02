@@ -57,7 +57,7 @@ public class Dog {
         this.name = name;
         this.ownerName = ownerName;
         this.age = age;
-        this.dogId = age;
+        this.dogId = dogId;
     }
 
     public Dog() {
@@ -70,13 +70,13 @@ public class Dog {
     // methods
     public String toString() {
         if (this.stillInFacility) {
-            return this.name + "is a good dog. They are " + this.age + "years old" 
+            return this.name + " is a good dog. They are " + this.age + " years old" 
             +  " and belongs to " + this.ownerName + ". They are currently in our facility." 
             + " For employee use only: DogTag is " + dogTag + ".";
         } else {
             return this.name + "is a good dog. They are " + this.age + "years old" 
             +  " and belongs to " + this.ownerName + ". They are currently not in our facility." 
-            + " For employee use only: DogTag is " + dogTag + ".";
+            + " For employee use only: DogTag is" + dogTag + ".";
         }
         
     }
@@ -92,10 +92,11 @@ public class Dog {
     }
 
     public char generateDogChar() {
-
+        int dig3 = this.dogId % 10;
+        int dig2 = (this.dogId / 10) % 10;
+        int dig1 = ((this.dogId / 10) / 10) % 10;
+        return (char) ('F' + ((dig3 + dig2 + dig1) % 10));
     }
 
-
-    
 
 }
