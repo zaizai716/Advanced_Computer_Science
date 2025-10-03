@@ -4,7 +4,7 @@ public class Dog {
     private String ownerName;
     private int age;
     private int dogId;
-    private char dogChar = generateDogChar();
+    private char dogChar;
     private String dogTag = generateDogTag();
     private boolean stillInFacility = true;
 
@@ -57,7 +57,7 @@ public class Dog {
         this.name = name;
         this.ownerName = ownerName;
         this.age = age;
-        this.dogId = dogId;
+        this.dogId = Dog.generateDogChar(this.dogId);
     }
 
     public Dog() {
@@ -91,12 +91,30 @@ public class Dog {
         return " " + dogId + dogChar + "";
     }
 
-    public char generateDogChar() {
-        int dig3 = this.dogId % 10;
-        int dig2 = (this.dogId / 10) % 10;
-        int dig1 = ((this.dogId / 10) / 10) % 10;
+    // now relies on an object to run
+    public static char generateDogChar(int dogId) {
+        int dig3 = dogId % 10;
+        int dig2 = (dogId / 10) % 10;
+        int dig1 = ((dogId / 10) / 10) % 10;
         return (char) ('F' + ((dig3 + dig2 + dig1) % 10));
     }
+
+    public static String pickup(Dog dog, String personName) {
+        if (dog.ownerName.equals(personName)) {
+            dog.stillInFacility = false;
+            return dog.name + " has been picked up by their owner "
+                + dog.ownerName + ".";
+        } else {
+            return dog.name + "can't leave! Safety first!";
+        }
+    }
+
+    public static void checkIn(Dog dog, String personName) {
+        dog.stillInFacility = true;
+        dog.ownerName = personName;
+    }
+
+
 
 
 }
