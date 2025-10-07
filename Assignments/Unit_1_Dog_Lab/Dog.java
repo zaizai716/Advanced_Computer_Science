@@ -5,7 +5,7 @@ public class Dog {
     private int age;
     private int dogId;
     private char dogChar;
-    private String dogTag = generateDogTag();
+    private String dogTag = PawesomeUtils.generateDogTag();
     private boolean stillInFacility = true;
 
     // getters and setters
@@ -57,7 +57,7 @@ public class Dog {
         this.name = name;
         this.ownerName = ownerName;
         this.age = age;
-        this.dogId = Dog.generateDogChar(this.dogId);
+        this.dogId = PawesomeUtils.generateDogChar(this.dogId, this.dogChar);
     }
 
     public Dog() {
@@ -86,35 +86,6 @@ public class Dog {
             && this.age == other.age && this.dogId == other.dogId && this.dogChar == other.dogChar
             && this.stillInFacility == other.stillInFacility;
     }
-
-    public String generateDogTag() {
-        return " " + dogId + dogChar + "";
-    }
-
-    // now relies on an object to run
-    public static char generateDogChar(int dogId) {
-        int dig3 = dogId % 10;
-        int dig2 = (dogId / 10) % 10;
-        int dig1 = ((dogId / 10) / 10) % 10;
-        return (char) ('F' + ((dig3 + dig2 + dig1) % 10));
-    }
-
-    public static String pickup(Dog dog, String personName) {
-        if (dog.ownerName.equals(personName)) {
-            dog.stillInFacility = false;
-            return dog.name + " has been picked up by their owner "
-                + dog.ownerName + ".";
-        } else {
-            return dog.name + "can't leave! Safety first!";
-        }
-    }
-
-    public static void checkIn(Dog dog, String personName) {
-        dog.stillInFacility = true;
-        dog.ownerName = personName;
-    }
-
-
 
 
 }

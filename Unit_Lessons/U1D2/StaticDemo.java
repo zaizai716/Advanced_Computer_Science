@@ -11,6 +11,8 @@ public class StaticDemo {
         String demo = StaticDemo.secondIfTest();
         System.out.println(demo);
 
+        System.out.println(Utils.generateRandomNumberBetween(55, 100));
+
     }
 
     // this method belongs to the object of the class
