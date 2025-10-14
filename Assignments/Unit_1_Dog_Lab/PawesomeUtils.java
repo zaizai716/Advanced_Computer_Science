@@ -44,9 +44,18 @@ public class PawesomeUtils {
     public static boolean validateDogTag(Dog dog) {
         int dogId = dog.getDogId();
         int validatedId = validateDogId(dogId);
-        char dogChar = generateDogChar(validatedId);
-        String newDogTag = generateDogTag(validatedId, dogChar);
-        return (newDogTag.equals(dog.getDogTag()));
+        
+        // Only update the dog's ID if it was invalid 
+        if (validatedId != dogId) {
+            dog.setDogId(validatedId);
+            dog.setDogChar(generateDogChar(validatedId));
+            dog.setDogTag(generateDogTag(validatedId, dog.getDogChar()));
+        }
+        
+        // Check if the current dog tag matches what it should be
+        char expectedChar = generateDogChar(dog.getDogId());
+        String expectedTag = generateDogTag(dog.getDogId(), expectedChar);
+        return expectedTag.equals(dog.getDogTag());
     }
 
     public static int convertAgeToHumanAge(Dog dog) {
