@@ -21,9 +21,8 @@ public class TriangleLoops {
     // to-do: implement createLetterTriangleUp
     public static String createLetterTriangleUp(int numberOfRows, char letter) {
         String triangle = "";
-        int index = 1;
-        while (index < numberOfRows) {
-            for (int i = index; i <= numberOfRows; i++) {
+        for (int row = 1; row <= numberOfRows; row++) {
+            for (int i = 0; i < row; i++) {
                 triangle += letter;
             }
             triangle += "\n";
@@ -42,7 +41,12 @@ public class TriangleLoops {
     // to-do: implement createLetterTriangleDown
     public static String createLetterTriangleDown(int numberOfRows, char letter) {
         String triangle = "";
-
+        for (int row = numberOfRows; row > 0; row--) {
+            for (int i = 0; i < row; i++) {
+                triangle += letter;
+            }
+            triangle += "\n";
+        }
         return triangle;
     }
 
@@ -56,6 +60,12 @@ public class TriangleLoops {
     // to-do: implement createNumbersTriangle
     public static String createNumbersTriangle(int numberOfRows) {
         String triangle = "";
+        for (int row = 1; row <= numberOfRows; row++) {
+            for (int i = 1; i <= row; i++) {
+                triangle += i;
+            }
+            triangle += "\n";
+        }
         return triangle;
     }
 
@@ -69,6 +79,32 @@ public class TriangleLoops {
     // to-do: implement createAlphabetTriangle
     public static String createAlphabetTriangle(int numberOfRows) {
         String triangle = "";
+
+        if (numberOfRows > 26) {
+            numberOfRows = 26;
+        }
+
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (int row = 0; row < numberOfRows; row++) {
+            // prints spaces for pyramid shape
+            for (int i = 0; i < numberOfRows - row - 1; i++) {
+                triangle += " ";
+            }
+
+            // prints letters ascending
+            for (int j = 0; j <= row; j++) {
+                triangle += alphabet.charAt(j);
+            }
+
+            // prints letters descending (excluding the middle letter)
+            for (int k = row - 1; k >= 0; k--) {
+                triangle += alphabet.charAt(k);
+            }
+
+            triangle += "\n";
+        }
+
         return triangle;
     }
 
