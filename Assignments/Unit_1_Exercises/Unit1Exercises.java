@@ -103,7 +103,11 @@ public class Unit1Exercises {
      * middleThree("solving") -> "lvi"
      */
     public static String middleThree(String str) {
-        return "";
+        if (str.length() == 3) {
+            return str;
+        } else {
+            return str.substring(1, 4);
+        }
     }
 
     // method: withoutEnd2
@@ -118,7 +122,11 @@ public class Unit1Exercises {
      * withoutEnd2("ab") -> ""
      */
     public static String withoutEnd2(String str) {
-        return "";
+        if (str.length() <= 2) {
+            return "";
+        } else {
+            return str.substring(1, str.length());
+        }
     }
 
     // method: stringEnds
