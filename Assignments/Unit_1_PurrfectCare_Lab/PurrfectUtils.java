@@ -1,45 +1,47 @@
 public class PurrfectUtils {
 
     public static String determineCatMood(Cat cat) {
-
+        String catName = cat.getName();
         int moodLevel = cat.getMoodLevel();
         if (moodLevel > 7 && moodLevel <= 10) {
-            return "Currently, Cookie is in a great mood." + "\n"
+            return "Currently, " + catName + " is in a great mood." + "\n"
                 + "Petting is appreciated.";
         } else if (moodLevel > 3 && moodLevel <= 7) {
-            return "Currently, Cookie is reminiscing of a past life." + "\n" 
+            return "Currently, " + catName + " is reminiscing of a past life." + "\n"
                 + "Petting is acceptable.";
         } else {
-            return "Currently, Cookie is plotting revengeance." + "\n"
+            return "Currently, " + catName + " is plotting revengeance." + "\n"
                 + "Petting is extremely risky.";
         }
-
     }
 
     public static char generateCatChar(String catId) {
-        char letter = 0;
+        int sum = 0;
         for (int i = 0; i < catId.length(); i++) {
-            int dig = (int) catId.charAt(0);
-            letter += dig;
+            char digitChar = catId.charAt(i);
+            int digit = Integer.parseInt(String.valueOf(digitChar));
+            sum += digit;
         }
 
-        letter %= 26;
-        return (char) (letter + 'A');
+        sum %= 26;
+        return (char) (sum + 'A');
     }
 
     public static int generateRandomNumber(int low, int high) {
-
         if (low > high) {
-            high = low;
+            int temp = low;
+            low = high;
+            high = temp;
         }
 
         return (int) (Math.random() * (high - low) + low);
     }
 
     public static String validateCatId(String catId) {
-        if (Integer.parseInt(catId) < 1000 && Integer.parseInt(catId) > 9999) {
-            int value = (int) (Math.random() * (8999) + 1000);
-            return value + ""; // to convert int to string
+        int idValue = Integer.parseInt(catId);
+        if (idValue < 1000 || idValue > 9999) {
+            int value = generateRandomNumber(1000, 10000);
+            return String.valueOf(value);
         } else {
             return catId;
         }
@@ -64,57 +66,56 @@ public class PurrfectUtils {
 
         int moodLevel = cat.getMoodLevel();
         boolean isHungry = cat.isHungry();
+        int originalMoodLevel = moodLevel;
 
         if (moodLevel >= 2) {
             moodLevel += 1;
         } else if (moodLevel < 2 && isHungry) {
             moodLevel -= 1;
-        } else if (moodLevel < 2 && isHungry == false) {
+        } else if (moodLevel < 2 && !isHungry) {
             moodLevel += 1;
-        } 
+        }
 
-        if (moodLevel > cat.getMoodLevel()) {
+        cat.setMoodLevel(moodLevel);
+
+        if (moodLevel > originalMoodLevel) {
             System.out.println("Petting successful!");
         } else {
-            System.out.println("Petting failed!");
+            System.out.println("Petting failed...");
         }
     }
 
     public static void trimClaws(Cat cat) {
         System.out.println("Attempting to trim claws...");
         int moodLevel = cat.getMoodLevel();
-        int decrease = generateRandomNumber(1, 2);
+        int decrease = generateRandomNumber(1, 3);
         moodLevel -= decrease;
+        cat.setMoodLevel(moodLevel);
 
-        if (cat.getMoodLevel() - moodLevel == 1) {
-            System.out.println("Cookie did not like that...");
+        if (decrease == 1) {
+            System.out.println(cat.getName() + " did not like that...");
         } else {
-            System.out.println("Cookie really hated that!");
+            System.out.println(cat.getName() + " really hated that!");
         }
     }
 
     public static void cleanLitterBox(Cat cat) {
-        // original mood level
         int moodLevel = cat.getMoodLevel();
-
-        // set new boolean values and mood level values
         cat.setHungry(true);
-        cat.setMoodLevel(moodLevel += 1);
+        cat.setMoodLevel(moodLevel + 1);
 
-        System.out.println("Cleaning the litter box..." +
-            "\n" + "Done!" + "\n" + "Cookie appreciated that.");
-
+        System.out.println("Cleaning the litter box..."
+            + "\n" + "Done!" + "\n" + cat.getName() + " appreciated that.");
     }
 
     public static void feed(Cat cat) {
         int moodLevel = cat.getMoodLevel();
-
         cat.setHungry(false);
-        cat.setMoodLevel(moodLevel += 2);
+        cat.setMoodLevel(moodLevel + 2);
 
-        System.out.println("Filling up Cookie's bowl..." + 
-        "\n" + "Done!" + "\n" + "Cookie is eating..." +
-        "\n" + "Cookie is full!");
+        System.out.println("Filling up " + cat.getName() + "'s bowl..."
+            + "\n" + "Done!" + "\n" + cat.getName() + " is eating..."
+            + "\n" + cat.getName() + " is full!");
     }
 
 }

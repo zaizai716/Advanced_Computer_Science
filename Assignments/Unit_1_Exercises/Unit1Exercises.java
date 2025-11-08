@@ -31,7 +31,8 @@ public class Unit1Exercises {
      * makeOutWord("[[]]", "word") -> "[[word]]"
      */
     public static String makeOutWord(String out, String word) {
-        return out.substring(0, 2) + word + out.substring(2, 4);
+        return out.substring(0, 2) + word 
+            + out.substring(2, 4);
     }
 
     // method: withoutEnd
@@ -64,10 +65,7 @@ public class Unit1Exercises {
      */
     public static String comboString(String a, String b) {
 
-        int aLength = a.length();
-        int bLength = b.length();
-
-        if (aLength > bLength) {
+        if (a.length() > b.length()) {
             return b + a + b;
         } else {
             return a + b + a;
@@ -87,6 +85,7 @@ public class Unit1Exercises {
      * left2("Hi") -> "Hi"
      */
     public static String left2(String str) {
+
         return str.substring(2, str.length()) + str.substring(0, 2);
     }
 
@@ -103,11 +102,9 @@ public class Unit1Exercises {
      * middleThree("solving") -> "lvi"
      */
     public static String middleThree(String str) {
-        if (str.length() == 3) {
-            return str;
-        } else {
-            return str.substring(1, 4);
-        }
+
+        int start = (str.length() - 3) / 2;
+        return str.substring(start, start + 3);
     }
 
     // method: withoutEnd2
@@ -122,10 +119,11 @@ public class Unit1Exercises {
      * withoutEnd2("ab") -> ""
      */
     public static String withoutEnd2(String str) {
+
         if (str.length() <= 2) {
             return "";
         } else {
-            return str.substring(1, str.length());
+            return str.substring(1, str.length() - 1);
         }
     }
 
@@ -141,7 +139,10 @@ public class Unit1Exercises {
      * stringEnds("Chocolate", 1) -> "Ce"
      */
     public static String stringEnds(String str, int n) {
-        return "";
+
+        String str1 = str.substring(0, n);
+        String str2 = str.substring((str.length() - n), str.length());
+        return str1 + str2;
     }
 
     // method: hasBad
@@ -157,6 +158,13 @@ public class Unit1Exercises {
      * hasBad("xxbadxx") -> false
      */
     public static boolean hasBad(String str) {
+
+        if (str.length() >= 3 && str.substring(0, 3).equals("bad")) {
+            return true;
+        }
+        if (str.length() >= 4 && str.substring(1, 4).equals("bad")) {
+            return true;
+        }
         return false;
     }
 
@@ -172,7 +180,16 @@ public class Unit1Exercises {
      * countVowels("") -> 0
      */
     public static int countVowels(String input) {
-        return 0;
+
+        int numVowels = 0;
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+                || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                numVowels++;
+            }
+        }
+        return numVowels;
     }
 
     // method: countCode
@@ -188,7 +205,15 @@ public class Unit1Exercises {
      * countCode("cozexxcope") -> 2
      */
     public static int countCode(String str) {
-        return 0;
+
+        int count = 0;
+        for (int i = 0; i < str.length() - 3; i++) {
+            if (str.charAt(i) == 'c' && str.charAt(i + 1) == 'o'
+                && str.charAt(i + 3) == 'e') {
+                count++;
+            }
+        }
+        return count;
     }
 
 }
