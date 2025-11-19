@@ -121,9 +121,9 @@ public class ArrayOps {
         }
         int[] list = new int[26];
 
-        for (char i = 0; i < lowerInput.length(); i++) {
+        for (int i = 0; i < lowerInput.length(); i++) {
             int c = lowerInput.charAt(i) - 'a';
-            if (c >= 0 && c <= 97) {
+            if (c >= 0 && c <= 25) {
                 list[c]++;
             }
         }
@@ -142,7 +142,21 @@ public class ArrayOps {
      * @return The updated array
      */
     public static int[] removeIntAndScoot(int[] array, int index) {
-        return new int[0];
+        // create duplicate array
+        int[] array2 = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            array2[i] = array[i];
+        }
+
+        // shift elements down by one starting from the index
+        for (int i = index; i < array2.length - 1; i++) {
+            array2[i] = array2[i + 1];
+        }
+        
+        // set the last element to zero
+        array2[array2.length - 1] = 0;
+
+        return array2;
     }
 
     /**
@@ -153,7 +167,31 @@ public class ArrayOps {
      * @return The resized array
      */
     public static int[] resizeIntArray(int[] array) {
-        return new int[0];
+        // exception handling
+        if (array == null) {
+            return null;
+        }
+        if (array.length == 0) {
+            return new int[0];
+        }
+
+        // creating second half of array
+        int[] array2 = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            array2[i] = 0;
+        }
+
+        int[] array3 = new int[array.length * 2];
+        for (int i = 0; i < (array.length * 2); i++) {
+            if (i < array.length) {
+                array3[i] = array[i];
+            } else {
+                array3[i] = 0;
+            }
+        }
+
+        return array3;
+
     }
 
     /**
@@ -170,7 +208,24 @@ public class ArrayOps {
      *         each String
      */
     public static String[] addNumToStringArray(String[] array) {
-        return new String[0];
+        // exception handling
+        if (array == null) {
+            return null;
+        }
+        if (array.length == 0) {
+            return new String[0];
+        }
+
+        String[] result = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                result[i] = null;
+            } else {
+                result[i] = "#" + i + " " + array[i];
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -181,7 +236,14 @@ public class ArrayOps {
      * @return The reversed array
      */
     public static int[] reverseIntArray(int[] array) {
-        return new int[0];
+        if (array == null) {
+            return null;
+        }
+        int[] reversed = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            reversed[i] = array[array.length - 1 - i];
+        }
+        return reversed;
     }
 
 }
