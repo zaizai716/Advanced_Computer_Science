@@ -10,6 +10,9 @@ public class ArrayOps {
      */
     public static String printStringArray(String[] array) {
         String s = "[";
+        if (array.length == 0) {
+            return "";
+        }
 
         for (int i = 0; i < array.length; i++) {
             if (i == array.length - 1) {
@@ -34,6 +37,9 @@ public class ArrayOps {
 
     public static String printIntegerArray(int[] array) {
         String s = "[";
+        if (array.length == 0) {
+            return "";
+        }
 
         for (int i = 0; i < array.length; i++) {
             if (i == array.length - 1) {
@@ -56,6 +62,9 @@ public class ArrayOps {
      */
     public static int findMax(int[] array) {
         int max = array[0];
+        if (array.length == 0) {
+            return 0;
+        }
 
         for (int i = 1; i < array.length; i++) {
             if (array[i] > max) {
@@ -76,6 +85,10 @@ public class ArrayOps {
      */
     public static String findLongestString(String[] array) {
         String longestString = array[0];
+
+        if (array == null) {
+            return "";
+        }
         for (int i = 1; i < array.length; i++) {
             if (array[i].length() > longestString.length()) {
                 longestString = array[i];
@@ -93,6 +106,9 @@ public class ArrayOps {
      */
     public static double averageStringLength(String[] array) {
         int totalSum = 0;
+        if (array == null) {
+            return 0.0;
+        }
 
         for (int i = 0; i < array.length; i++) {
             totalSum += array[i].length();
@@ -116,6 +132,7 @@ public class ArrayOps {
      */
     public static int[] countLetterFrequencies(String input) {
         String lowerInput = input.toLowerCase();
+        
         if (input.length() == 0) {
             return new int[0];
         }
@@ -169,7 +186,7 @@ public class ArrayOps {
     public static int[] resizeIntArray(int[] array) {
         // exception handling
         if (array == null) {
-            return null;
+            return new int[0];
         }
         if (array.length == 0) {
             return new int[0];
@@ -210,7 +227,7 @@ public class ArrayOps {
     public static String[] addNumToStringArray(String[] array) {
         // exception handling
         if (array == null) {
-            return null;
+            return new String[0];
         }
         if (array.length == 0) {
             return new String[0];
@@ -237,7 +254,7 @@ public class ArrayOps {
      */
     public static int[] reverseIntArray(int[] array) {
         if (array == null) {
-            return null;
+            return new int[0];
         }
         int[] reversed = new int[array.length];
         for (int i = 0; i < array.length; i++) {
