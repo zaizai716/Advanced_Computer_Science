@@ -31,7 +31,7 @@ public class CourseTester {
         System.out.println("Expected: Ana (should have highest final average)");
         System.out.println("Got:      " + bestStudent);
         boolean test2 = bestStudent.equals("Ana");
-        System.out.println("Result: " + (test2 ? "PASS ✓" : "FAIL ✗"));
+        System.out.println("Result: " + (test2 ? "PASS" : "FAIL"));
         System.out.println();
 
         // Test 3: calculateTestAverage()
@@ -42,7 +42,7 @@ public class CourseTester {
         System.out.println("Expected average: ~91.67");
         System.out.println("Got:      " + test0Avg);
         boolean test3 = Math.abs(test0Avg - 91.67) < 0.1;
-        System.out.println("Result: " + (test3 ? "PASS ✓" : "FAIL ✗"));
+        System.out.println("Result: " + (test3 ? "PASS" : "FAIL"));
         System.out.println();
 
         // Test 4: calculateTestAverage() with different test number
@@ -53,7 +53,7 @@ public class CourseTester {
         System.out.println("Expected average: ~89.33");
         System.out.println("Got:      " + test1Avg);
         boolean test4 = Math.abs(test1Avg - 89.33) < 0.1;
-        System.out.println("Result: " + (test4 ? "PASS ✓" : "FAIL ✗"));
+        System.out.println("Result: " + (test4 ? "PASS" : "FAIL"));
         System.out.println();
 
         // Test 5: Course getters and setters
@@ -61,10 +61,11 @@ public class CourseTester {
         String originalName = mathCourse.getCourseName();
         mathCourse.setCourseName("Advanced Mathematics");
         String newName = mathCourse.getCourseName();
-        boolean test5 = originalName.equals("Mathematics") && newName.equals("Advanced Mathematics");
+        boolean test5 = originalName.equals("Mathematics")
+                && newName.equals("Advanced Mathematics");
         System.out.println("Original: " + originalName);
         System.out.println("After set: " + newName);
-        System.out.println("Result: " + (test5 ? "PASS ✓" : "FAIL ✗"));
+        System.out.println("Result: " + (test5 ? "PASS" : "FAIL"));
         System.out.println();
 
         // Test 6: getEnrolledStudents()
@@ -73,7 +74,7 @@ public class CourseTester {
         boolean test6 = (enrolled.length == 3);
         System.out.println("Expected: 3 students");
         System.out.println("Got:      " + enrolled.length + " students");
-        System.out.println("Result: " + (test6 ? "PASS ✓" : "FAIL ✗"));
+        System.out.println("Result: " + (test6 ? "PASS" : "FAIL"));
         System.out.println();
 
         // Test 7: setEnrolledStudents()
@@ -84,7 +85,7 @@ public class CourseTester {
         boolean test7 = (updatedEnrolled.length == 1);
         System.out.println("Set to 1 student, expected: 1");
         System.out.println("Got:      " + updatedEnrolled.length);
-        System.out.println("Result: " + (test7 ? "PASS ✓" : "FAIL ✗"));
+        System.out.println("Result: " + (test7 ? "PASS" : "FAIL"));
         System.out.println();
 
         System.out.println("=== Testing Complete ===");
