@@ -14,6 +14,6 @@ public class Matrices {
         int[][] fun = { {1, 2, 3}, {4, 5}, {6, 7, 8}};
         System.out.println(fun[1][2]);
 
-        int[][][] funtothemax = new int[3][3][3];
+        int[][][] funtothemax = new int[3][3][3];y
     }
 }
